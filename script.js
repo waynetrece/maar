@@ -420,6 +420,19 @@
     });
   });
 
+  /* compare thumbnails → lightbox */
+  document.querySelectorAll('.compare__thumb[data-lightbox]').forEach(el => {
+    el.addEventListener('click', () => {
+      const img = el.querySelector('img');
+      const label = el.querySelector('.compare__thumb-label');
+      const site = el.querySelector('.compare__thumb-site');
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt || '';
+      lightboxCaption.textContent = (label ? label.textContent : '') + (site ? ' — ' + site.textContent : '');
+      lightbox.classList.add('active');
+    });
+  });
+
   lightbox.addEventListener('click', () => lightbox.classList.remove('active'));
   document.getElementById('lightboxClose').addEventListener('click', () => lightbox.classList.remove('active'));
   document.addEventListener('keydown', e => {
