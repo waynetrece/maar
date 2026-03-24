@@ -420,6 +420,24 @@
     });
   });
 
+  /* compare labels → lightbox (click label to view full image) */
+  document.querySelectorAll('.compare__label').forEach(label => {
+    label.addEventListener('click', e => {
+      e.stopPropagation();
+      const container = label.closest('[data-compare]');
+      const isBefore = label.classList.contains('compare__label--before');
+      const panel = isBefore
+        ? container.querySelector('.compare__before')
+        : container.querySelector('.compare__after');
+      const img = panel.querySelector('img');
+      if (!img) return;
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt || '';
+      lightboxCaption.textContent = isBefore ? '原本畫面' : '建議參考';
+      lightbox.classList.add('active');
+    });
+  });
+
   /* compare thumbnails → lightbox */
   document.querySelectorAll('.compare__thumb[data-lightbox]').forEach(el => {
     el.addEventListener('click', () => {
