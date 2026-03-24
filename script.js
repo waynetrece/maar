@@ -114,11 +114,13 @@
   /* touch/swipe */
   let touchStartX = 0;
   let touchStartY = 0;
+  let compareIsDragging = false;
   document.addEventListener('touchstart', e => {
     touchStartX = e.touches[0].clientX;
     touchStartY = e.touches[0].clientY;
   }, { passive: true });
   document.addEventListener('touchend', e => {
+    if (compareIsDragging) return;
     const dx = e.changedTouches[0].clientX - touchStartX;
     const dy = e.changedTouches[0].clientY - touchStartY;
     if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
@@ -296,7 +298,7 @@
       '.split__problem, .split__solution, .opt-list li, .feat-list li, ' +
       '.ref-card, .tech-card, .priority-card, .split__dual-item, ' +
       '.card, .badge, .flow__step, .flow__line, ' +
-      '.diagram__root, .diagram__branch'
+      '.diagram__root, .diagram__branch, .compare'
     );
     if (items.length) {
       gsap.to(items, {
@@ -310,6 +312,74 @@
   /* ── Init first slide ── */
   updateUI();
   setTimeout(() => animateSlide(0), 300);
+
+  /* ═══ BEFORE/AFTER COMPARE SLIDERS ═══ */
+
+  function initCompareSliders() {
+    document.querySelectorAll('[data-compare]').forEach(container => {
+      const handle   = container.querySelector('.compare__handle');
+      const divider  = container.querySelector('.compare__divider');
+      const before   = container.querySelector('.compare__before');
+      let isDragging = false;
+
+      function setPosition(pct) {
+        pct = Math.max(5, Math.min(95, pct));
+        before.style.clipPath    = `inset(0 ${100 - pct}% 0 0)`;
+        divider.style.left       = pct + '%';
+        handle.style.left        = pct + '%';
+      }
+
+      function getPercent(clientX) {
+        const rect  = container.getBoundingClientRect();
+        const x     = clientX - rect.left;
+        return (x / rect.width) * 100;
+      }
+
+      /* Initialise at 50% */
+      setPosition(50);
+
+      /* Mouse events */
+      handle.addEventListener('mousedown', e => {
+        isDragging = true;
+        e.preventDefault();
+      });
+
+      document.addEventListener('mousemove', e => {
+        if (!isDragging) return;
+        setPosition(getPercent(e.clientX));
+      });
+
+      document.addEventListener('mouseup', () => {
+        isDragging = false;
+      });
+
+      /* Touch events */
+      handle.addEventListener('touchstart', e => {
+        isDragging = true;
+        compareIsDragging = true;
+        e.preventDefault();
+      }, { passive: false });
+
+      document.addEventListener('touchmove', e => {
+        if (!isDragging) return;
+        e.preventDefault();
+        setPosition(getPercent(e.touches[0].clientX));
+      }, { passive: false });
+
+      document.addEventListener('touchend', () => {
+        isDragging = false;
+        compareIsDragging = false;
+      });
+
+      /* Click anywhere on the container to jump */
+      container.addEventListener('click', e => {
+        if (e.target === handle) return;
+        setPosition(getPercent(e.clientX));
+      });
+    });
+  }
+
+  initCompareSliders();
 
   /* ═══ LIGHTBOX ═══ */
   const lightbox = document.getElementById('lightbox');
