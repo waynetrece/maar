@@ -298,7 +298,7 @@
       '.split__problem, .split__solution, .opt-list li, .feat-list li, ' +
       '.ref-card, .tech-card, .priority-card, .split__dual-item, ' +
       '.card, .badge, .flow__step, .flow__line, ' +
-      '.diagram__root, .diagram__branch, .compare'
+      '.diagram__root, .diagram__branch, .compare, .ref-showcase'
     );
     if (items.length) {
       gsap.to(items, {
@@ -393,6 +393,19 @@
       lightboxImg.src = img.src;
       lightboxImg.alt = img.alt;
       lightboxCaption.textContent = label ? label.textContent : '';
+      lightbox.classList.add('active');
+    });
+  });
+
+  /* ref-showcase images → lightbox */
+  document.querySelectorAll('.ref-showcase__img').forEach(el => {
+    el.addEventListener('click', () => {
+      const img = el.querySelector('img');
+      const showcase = el.closest('.ref-showcase');
+      const name = showcase.querySelector('.ref-showcase__name');
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt || '';
+      lightboxCaption.textContent = name ? name.textContent : '';
       lightbox.classList.add('active');
     });
   });

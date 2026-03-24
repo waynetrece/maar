@@ -742,6 +742,124 @@ body {
   flex-shrink: 0;
 }
 
+/* ═══ REFERENCE SHOWCASE ═══ */
+.split__right--ref {
+  width: 520px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ref-showcase {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-height: calc(100vh - var(--nav-h) - var(--ctrl-h) - 60px);
+}
+
+.ref-showcase__badge {
+  display: inline-block;
+  align-self: flex-start;
+  background: var(--navy);
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  padding: 5px 14px;
+  border-radius: 4px;
+  margin-bottom: 12px;
+  font-family: var(--font-cn);
+}
+
+.ref-showcase__img {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(30, 58, 95, 0.15);
+  border: 1px solid rgba(0,0,0,0.08);
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+
+.ref-showcase__img:hover {
+  box-shadow: 0 12px 48px rgba(30, 58, 95, 0.25);
+}
+
+.ref-showcase__img::after {
+  content: '點擊放大';
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: rgba(30, 58, 95, 0.85);
+  color: #fff;
+  font-size: 13px;
+  font-family: var(--font-cn);
+  padding: 5px 12px;
+  border-radius: 6px;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.ref-showcase__img:hover::after {
+  opacity: 1;
+}
+
+.ref-showcase__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.ref-showcase__img:hover img {
+  transform: scale(1.02);
+}
+
+.ref-showcase__info {
+  padding: 16px 4px 0;
+}
+
+.ref-showcase__name {
+  font-family: var(--font-cn);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+
+.ref-showcase__desc {
+  font-family: var(--font-cn);
+  font-size: 14px;
+  color: var(--slate);
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.ref-showcase__link {
+  display: inline-block;
+  font-family: var(--font-cn);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--gold);
+  text-decoration: none;
+  padding: 6px 16px;
+  border: 1.5px solid var(--gold);
+  border-radius: 6px;
+  transition: all 0.25s ease;
+}
+
+.ref-showcase__link:hover {
+  background: var(--gold);
+  color: var(--white);
+}
+
 /* Nav structure boxes inside slide 07 */
 .nav-compare {
   display: grid;
@@ -1425,7 +1543,8 @@ body.fullscreen .slide--split .split { padding-top: 0; }
 .split__problem, .split__solution, .split__dual-item,
 .deep-card,
 .diagram__root, .diagram__branch,
-.compare {
+.compare,
+.ref-showcase {
   opacity: 0;
   transform: translateY(24px);
 }
@@ -1540,6 +1659,7 @@ body.fullscreen .slide--split .split { padding-top: 0; }
   .split__left { padding: 32px 32px 32px 40px; }
   .split__right { width: 320px; padding: 32px 20px; }
   .split__right--compare { width: 380px; padding: 28px 20px; }
+  .split__right--ref { width: 400px; }
 
   .stat__number { font-size: 56px; }
   .stats { gap: 36px; }
@@ -1635,6 +1755,9 @@ body.fullscreen .slide--split .split { padding-top: 0; }
     max-height: 280px;
   }
   .compare { max-height: 220px; min-height: 160px; }
+  .split__right--ref { width: 100%; max-height: 50vh; }
+  .ref-showcase { max-height: 50vh; }
+  .ref-showcase__img { min-height: 200px; }
   .compare__handle { width: 36px; height: 36px; }
   .compare__handle::before { font-size: 11px; }
   .compare__label { font-size: 11px; padding: 3px 8px; top: 10px; }
