@@ -392,6 +392,27 @@ body {
   color: var(--slate);
   line-height: 1.6;
 }
+.problem__img {
+  margin-top: 12px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(0,0,0,0.08);
+}
+.problem__img img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  object-position: top left;
+  display: block;
+}
+.problem__img-label {
+  display: block;
+  padding: 6px 10px;
+  font-size: 13px;
+  color: var(--red);
+  background: rgba(220,74,74,0.05);
+  font-weight: 500;
+}
 
 /* ═══ DEEP PROBLEM CARDS ═══ */
 .deep-grid {
@@ -1312,6 +1333,7 @@ body.fullscreen .slide--split .split { padding-top: 0; }
   .problem { padding: 16px 20px; }
   .problem__title { font-size: 20px; }
   .problem__desc { font-size: 16px; }
+  .problem__img img { height: 100px; }
 
   /* Deep cards: 2 columns */
   .deep-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1409,6 +1431,7 @@ body.fullscreen .slide--split .split { padding-top: 0; }
   .problem__title { font-size: 18px; }
   .problem__pct { font-size: 18px; }
   .problem__desc { font-size: 15px; }
+  .problem__img { display: none; }
 
   .deep-grid { grid-template-columns: 1fr; }
   .deep-card { padding: 20px 16px 18px; }
