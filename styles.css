@@ -1253,7 +1253,7 @@ body.fullscreen .slide--split .split { padding-top: 0; }
   position: fixed;
   inset: 0;
   z-index: 9999;
-  background: rgba(0,0,0,0.85);
+  background: rgba(0,0,0,0.92);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1289,13 +1289,16 @@ body.fullscreen .slide--split .split { padding-top: 0; }
   box-shadow: 0 8px 40px rgba(0,0,0,0.4);
 }
 .lightbox__caption {
-  margin-top: 20px;
+  margin-top: 24px;
   color: #fff;
-  font-size: 22px;
-  font-weight: 500;
+  font-size: 28px;
+  font-weight: 600;
   text-align: center;
   max-width: 85vw;
   line-height: 1.5;
+  background: rgba(0,0,0,0.6);
+  padding: 12px 28px;
+  border-radius: 8px;
 }
 .problem__img {
   cursor: zoom-in;
