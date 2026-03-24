@@ -327,6 +327,16 @@
     });
   });
 
+  /* evidence buttons on deep-cards */
+  document.querySelectorAll('.deep-card__evidence').forEach(el => {
+    el.addEventListener('click', () => {
+      lightboxImg.src = el.dataset.evidence;
+      lightboxImg.alt = el.dataset.caption || '';
+      lightboxCaption.textContent = el.dataset.caption || '';
+      lightbox.classList.add('active');
+    });
+  });
+
   lightbox.addEventListener('click', () => lightbox.classList.remove('active'));
   document.getElementById('lightboxClose').addEventListener('click', () => lightbox.classList.remove('active'));
   document.addEventListener('keydown', e => {

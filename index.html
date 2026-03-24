@@ -270,8 +270,9 @@
         <div class="deep-card__icon">
           <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="20" cy="20" r="16"/><path d="M20 12v10"/><circle cx="20" cy="27" r="1.5" fill="currentColor"/></svg>
         </div>
-        <h3 class="deep-card__title">robots.txt 阻擋搜尋引擎</h3>
-        <p class="deep-card__desc">設定 Crawl-delay: 300 秒，等於告訴 Google <strong>每 5 分鐘才能看一頁</strong>。45 頁全爬完要超過 3 小時，嚴重拖慢搜尋排名。</p>
+        <h3 class="deep-card__title">robots.txt 拖慢搜尋收錄</h3>
+        <p class="deep-card__desc">設定 Crawl-delay: 300 秒，等於告訴 Google <strong>每 5 分鐘才能看一頁</strong>。45 頁全爬完要超過 3 小時，新發布的內容很久才會出現在搜尋結果。</p>
+        <div class="deep-card__evidence" data-evidence="screenshots/evidence-robots.png" data-caption="左：MAAR 的 robots.txt（限速 300 秒）｜右：正常配置（不限速 + 提供 Sitemap）">查看原始碼對比</div>
       </div>
       <div class="deep-card">
         <div class="deep-card__severity deep-card__severity--critical">致命</div>
@@ -280,6 +281,7 @@
         </div>
         <h3 class="deep-card__title">零安全標頭防護</h3>
         <p class="deep-card__desc">伺服器完全沒有設定任何安全標頭（CSP / X-Frame-Options 等），<strong>任何釣魚網站都可以嵌入貴站頁面</strong>進行詐騙。</p>
+        <div class="deep-card__evidence" data-evidence="screenshots/evidence-headers.png" data-caption="左：MAAR 回應標頭（7 項全部缺少）｜右：中研院淨零 iWare 建置（7 項全部設定）">查看標頭對比</div>
       </div>
       <div class="deep-card">
         <div class="deep-card__severity deep-card__severity--critical">致命</div>
@@ -288,14 +290,16 @@
         </div>
         <h3 class="deep-card__title">會員帳號可被竊取</h3>
         <p class="deep-card__desc">Cookie 缺少 HttpOnly / Secure 旗標，<strong>JavaScript 可直接讀取會員的登入 Session</strong>，一旦遭 XSS 攻擊即可劫持帳號。</p>
+        <div class="deep-card__evidence" data-evidence="screenshots/evidence-cookies.png" data-caption="左：MAAR Cookie（3 項安全旗標全缺）｜右：中研院淨零 iWare 建置（3 項全部啟用）">查看 Cookie 對比</div>
       </div>
       <div class="deep-card">
-        <div class="deep-card__severity deep-card__severity--high">嚴重</div>
+        <div class="deep-card__severity deep-card__severity--critical">嚴重</div>
         <div class="deep-card__icon">
           <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="20" cy="20" r="8"/><circle cx="20" cy="20" r="16"/><path d="M20 4v4M20 32v4M4 20h4M32 20h4"/></svg>
         </div>
-        <h3 class="deep-card__title">搜尋引擎完全找不到</h3>
-        <p class="deep-card__desc">無 Sitemap.xml、無結構化資料、無 Open Graph 標籤。<strong>Google 搜尋結果只顯示純文字</strong>，LINE 分享無預覽圖。</p>
+        <h3 class="deep-card__title">搜尋結果缺乏資訊呈現</h3>
+        <p class="deep-card__desc">搜名稱能找到，但缺少 Sitemap.xml、OG 標籤、結構化資料。<strong>Google 搜尋結果只有純文字</strong>，LINE 分享無預覽圖、無說明。</p>
+        <div class="deep-card__evidence" data-evidence="screenshots/evidence-seo.png" data-caption="左：MAAR 原始碼（0 個 OG 標籤、Sitemap 404）｜右：台灣職能治療學會 iWare 建置（完整 OG 標籤）">查看原始碼對比</div>
       </div>
       <div class="deep-card">
         <div class="deep-card__severity deep-card__severity--high">需改善</div>
@@ -303,7 +307,8 @@
           <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="32" height="32" rx="4"/><path d="M12 28V20"/><path d="M20 28V14"/><path d="M28 28V10"/></svg>
         </div>
         <h3 class="deep-card__title">不知道誰來看過網站</h3>
-        <p class="deep-card__desc">沒有安裝流量分析工具，<strong>完全看不到訪客來源、人數和行為</strong>。</p>
+        <p class="deep-card__desc">原始碼中找不到 Google Analytics 或任何分析工具，僅有圖片計數器。<strong>完全看不到訪客來源、停留時間和瀏覽行為</strong>。</p>
+        <div class="deep-card__evidence" data-evidence="screenshots/evidence-analytics.png" data-caption="左：MAAR 原始碼搜尋結果（0 筆分析工具）｜右：有安裝 Google Analytics 的原始碼範例">查看原始碼對比</div>
       </div>
       <div class="deep-card">
         <div class="deep-card__severity deep-card__severity--high">需改善</div>
