@@ -298,7 +298,7 @@
       '.split__problem, .split__solution, .opt-list li, .feat-list li, ' +
       '.ref-card, .tech-card, .priority-card, .split__dual-item, ' +
       '.card, .badge, .flow__step, .flow__line, ' +
-      '.diagram__root, .diagram__branch, .compare, .ref-showcase'
+      '.diagram__root, .diagram__branch, .compare, .ref-compare__item'
     );
     if (items.length) {
       gsap.to(items, {
@@ -397,15 +397,15 @@
     });
   });
 
-  /* ref-showcase images → lightbox */
-  document.querySelectorAll('.ref-showcase__img').forEach(el => {
+  /* ref-compare images → lightbox */
+  document.querySelectorAll('.ref-compare__img[data-lightbox]').forEach(el => {
     el.addEventListener('click', () => {
       const img = el.querySelector('img');
-      const showcase = el.closest('.ref-showcase');
-      const name = showcase.querySelector('.ref-showcase__name');
+      const item = el.closest('.ref-compare__item');
+      const badge = item ? item.querySelector('.ref-compare__badge') : null;
       lightboxImg.src = img.src;
       lightboxImg.alt = img.alt || '';
-      lightboxCaption.textContent = name ? name.textContent : '';
+      lightboxCaption.textContent = badge ? badge.textContent : (img.alt || '');
       lightbox.classList.add('active');
     });
   });
