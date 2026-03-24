@@ -311,4 +311,26 @@
   updateUI();
   setTimeout(() => animateSlide(0), 300);
 
+  /* ═══ LIGHTBOX ═══ */
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxCaption = document.getElementById('lightboxCaption');
+
+  document.querySelectorAll('.problem__img').forEach(el => {
+    el.addEventListener('click', () => {
+      const img = el.querySelector('img');
+      const label = el.querySelector('.problem__img-label');
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightboxCaption.textContent = label ? label.textContent : '';
+      lightbox.classList.add('active');
+    });
+  });
+
+  lightbox.addEventListener('click', () => lightbox.classList.remove('active'));
+  document.getElementById('lightboxClose').addEventListener('click', () => lightbox.classList.remove('active'));
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') lightbox.classList.remove('active');
+  });
+
 })();
