@@ -236,20 +236,20 @@
         <div class="problem__bar"><div class="problem__fill" data-width="90"></div></div>
         <p class="problem__desc">部分頁面出現亂碼，影響閱讀體驗</p>
         <div class="problem__img">
-          <img src="screenshots/problem-encoding.png" alt="歷年紀事頁面停在2014年" loading="lazy">
-          <span class="problem__img-label">歷年紀事資料停在 2014 年，12 年未更新</span>
+          <img src="screenshots/problem-encoding.png" alt="原始碼顯示 charset=big5" loading="lazy">
+          <span class="problem__img-label">原始碼使用 Big5 編碼，現代標準為 UTF-8</span>
         </div>
       </div>
       <div class="problem">
         <div class="problem__head">
-          <h3 class="problem__title">HTTPS 安全疑慮</h3>
+          <h3 class="problem__title">Mixed Content 混用</h3>
           <span class="problem__pct">85%</span>
         </div>
         <div class="problem__bar"><div class="problem__fill" data-width="85"></div></div>
-        <p class="problem__desc">HTTP/HTTPS 混用，瀏覽器顯示「不安全」警告</p>
+        <p class="problem__desc">已有 SSL 憑證，但 CSS、JS、圖片仍以 HTTP 載入</p>
         <div class="problem__img">
-          <img src="screenshots/problem-https.png" alt="HTTPS混用問題" loading="lazy">
-          <span class="problem__img-label">瀏覽器網址列顯示「不安全」</span>
+          <img src="screenshots/problem-https.png" alt="Mixed Content 問題" loading="lazy">
+          <span class="problem__img-label">頁面資源仍透過 HTTP 載入，觸發混合內容警告</span>
         </div>
       </div>
     </div>
