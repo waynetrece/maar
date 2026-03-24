@@ -420,21 +420,48 @@
     });
   });
 
-  /* compare labels → lightbox (click label to view full image) */
+  /* compare labels → lightbox compare mode */
+  const lbCompare     = document.getElementById('lightboxCompare');
+  const lbBefore      = document.getElementById('lbCompareBefore');
+  const lbAfter       = document.getElementById('lbCompareAfter');
+  const lbDivider     = document.getElementById('lbCompareDivider');
+  const lbHandle      = document.getElementById('lbCompareHandle');
+  let lbDragging      = false;
+
+  function openCompareLightbox(beforeSrc, afterSrc) {
+    lbBefore.querySelector('img').src = beforeSrc;
+    lbAfter.querySelector('img').src  = afterSrc;
+    lightbox.classList.add('active', 'lightbox--compare');
+    setLbPosition(50);
+  }
+
+  function setLbPosition(pct) {
+    pct = Math.max(5, Math.min(95, pct));
+    lbBefore.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
+    lbDivider.style.left    = pct + '%';
+    lbHandle.style.left     = pct + '%';
+  }
+
+  function getLbPercent(clientX) {
+    const rect = lbCompare.getBoundingClientRect();
+    return ((clientX - rect.left) / rect.width) * 100;
+  }
+
+  lbHandle.addEventListener('mousedown', e => { lbDragging = true; e.preventDefault(); });
+  document.addEventListener('mousemove', e => { if (lbDragging) setLbPosition(getLbPercent(e.clientX)); });
+  document.addEventListener('mouseup', () => { lbDragging = false; });
+  lbHandle.addEventListener('touchstart', e => { lbDragging = true; e.preventDefault(); }, { passive: false });
+  document.addEventListener('touchmove', e => { if (lbDragging) { e.preventDefault(); setLbPosition(getLbPercent(e.touches[0].clientX)); }}, { passive: false });
+  document.addEventListener('touchend', () => { lbDragging = false; });
+  lbCompare.addEventListener('click', e => { if (e.target !== lbHandle && !lbHandle.contains(e.target)) setLbPosition(getLbPercent(e.clientX)); });
+
   document.querySelectorAll('.compare__label').forEach(label => {
     label.addEventListener('click', e => {
       e.stopPropagation();
       const container = label.closest('[data-compare]');
-      const isBefore = label.classList.contains('compare__label--before');
-      const panel = isBefore
-        ? container.querySelector('.compare__before')
-        : container.querySelector('.compare__after');
-      const img = panel.querySelector('img');
-      if (!img) return;
-      lightboxImg.src = img.src;
-      lightboxImg.alt = img.alt || '';
-      lightboxCaption.textContent = isBefore ? '原本畫面' : '建議參考';
-      lightbox.classList.add('active');
+      const beforeImg = container.querySelector('.compare__before img');
+      const afterImg  = container.querySelector('.compare__after img');
+      if (beforeImg && afterImg) openCompareLightbox(beforeImg.src, afterImg.src);
     });
   });
 
@@ -451,10 +478,16 @@
     });
   });
 
-  lightbox.addEventListener('click', () => lightbox.classList.remove('active'));
-  document.getElementById('lightboxClose').addEventListener('click', () => lightbox.classList.remove('active'));
+  function closeLightbox() {
+    lightbox.classList.remove('active', 'lightbox--compare');
+    lbDragging = false;
+  }
+  lightbox.addEventListener('click', e => {
+    if (e.target === lightbox) closeLightbox();
+  });
+  document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
   document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') lightbox.classList.remove('active');
+    if (e.key === 'Escape') closeLightbox();
   });
 
 })();

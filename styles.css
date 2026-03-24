@@ -1701,6 +1701,94 @@ body.fullscreen .slide--split .split { padding-top: 0; }
   padding: 12px 28px;
   border-radius: 8px;
 }
+/* Lightbox compare mode */
+.lightbox--compare .lightbox__img,
+.lightbox--compare .lightbox__caption { display: none; }
+.lightbox__compare { display: none; }
+.lightbox--compare .lightbox__compare { display: block; }
+
+.lightbox--compare { cursor: default; }
+
+.lightbox__compare {
+  position: relative;
+  width: 90vw;
+  height: 80vh;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+}
+.lightbox__compare-before,
+.lightbox__compare-after {
+  position: absolute;
+  inset: 0;
+}
+.lightbox__compare-before { z-index: 2; clip-path: inset(0 50% 0 0); }
+.lightbox__compare-after  { z-index: 1; }
+.lightbox__compare-before img,
+.lightbox__compare-after img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #1a1a1a;
+}
+.lightbox__compare-label {
+  position: absolute;
+  top: 20px;
+  z-index: 5;
+  font-family: var(--font-cn);
+  font-size: 16px;
+  font-weight: 700;
+  padding: 8px 18px;
+  border-radius: 8px;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.lightbox__compare-label--before {
+  left: 20px;
+  background: rgba(220, 74, 74, 0.9);
+  color: #fff;
+}
+.lightbox__compare-label--after {
+  right: 20px;
+  background: rgba(30, 58, 95, 0.9);
+  color: #fff;
+}
+.lightbox__compare-divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 3px;
+  background: var(--gold);
+  z-index: 4;
+  pointer-events: none;
+  box-shadow: 0 0 8px rgba(200, 164, 92, 0.6);
+}
+.lightbox__compare-handle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  cursor: ew-resize;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.4));
+}
+.lightbox__compare-hint {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  font-family: var(--font-cn);
+  font-size: 14px;
+  color: rgba(255,255,255,0.8);
+  background: rgba(0,0,0,0.5);
+  padding: 6px 20px;
+  border-radius: 20px;
+  pointer-events: none;
+  letter-spacing: 2px;
+}
+
 .problem__img {
   cursor: zoom-in;
 }

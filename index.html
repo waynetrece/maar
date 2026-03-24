@@ -1108,8 +1108,25 @@
 <!-- ═══ LIGHTBOX ═══ -->
 <div class="lightbox" id="lightbox">
   <button class="lightbox__close" id="lightboxClose">&times;</button>
+  <!-- Single image mode -->
   <img class="lightbox__img" id="lightboxImg" src="" alt="">
   <p class="lightbox__caption" id="lightboxCaption"></p>
+  <!-- Compare mode -->
+  <div class="lightbox__compare" id="lightboxCompare">
+    <div class="lightbox__compare-before" id="lbCompareBefore">
+      <img src="" alt="">
+      <span class="lightbox__compare-label lightbox__compare-label--before">原本畫面</span>
+    </div>
+    <div class="lightbox__compare-after" id="lbCompareAfter">
+      <img src="" alt="">
+      <span class="lightbox__compare-label lightbox__compare-label--after">建議參考</span>
+    </div>
+    <div class="lightbox__compare-divider" id="lbCompareDivider"></div>
+    <div class="lightbox__compare-handle" id="lbCompareHandle">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="13" fill="#C8A45C" stroke="#fff" stroke-width="2"/><path d="M10 10l-4 4 4 4M18 10l4 4-4 4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <p class="lightbox__compare-hint">← 拖曳比較 →</p>
+  </div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
