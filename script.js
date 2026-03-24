@@ -298,7 +298,7 @@
       '.split__problem, .split__solution, .opt-list li, .feat-list li, ' +
       '.ref-card, .tech-card, .priority-card, .split__dual-item, ' +
       '.card, .badge, .flow__step, .flow__line, ' +
-      '.diagram__root, .diagram__branch, .compare, .ref-compare__item'
+      '.diagram__root, .diagram__branch, .compare'
     );
     if (items.length) {
       gsap.to(items, {

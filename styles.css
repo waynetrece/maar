@@ -731,15 +731,41 @@ body {
   text-align: right;
 }
 
-/* Hint text below compare */
+/* Footer below compare */
+.compare__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+  flex-shrink: 0;
+  gap: 12px;
+}
+
 .compare__hint {
   font-family: var(--font-en);
   font-size: 13px;
   color: var(--slate-light);
-  text-align: center;
   letter-spacing: 1px;
-  padding-top: 10px;
   flex-shrink: 0;
+}
+
+.compare__ref-link {
+  font-family: var(--font-cn);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--gold);
+  text-decoration: none;
+  padding: 5px 14px;
+  border: 1.5px solid var(--gold);
+  border-radius: 6px;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.compare__ref-link:hover {
+  background: var(--gold);
+  color: var(--white);
 }
 
 /* ═══ REFERENCE SHOWCASE ═══ */
@@ -1542,8 +1568,7 @@ body.fullscreen .slide--split .split { padding-top: 0; }
 .split__problem, .split__solution, .split__dual-item,
 .deep-card,
 .diagram__root, .diagram__branch,
-.compare,
-.ref-compare__item {
+.compare {
   opacity: 0;
   transform: translateY(24px);
 }
