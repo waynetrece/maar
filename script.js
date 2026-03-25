@@ -179,9 +179,12 @@
     tl.to(slide.querySelector('.cover__subtitle'), {
       opacity: 1, y: 0, duration: 0.6, ease: 'power2.out'
     }, '-=0.3');
+    tl.to(slide.querySelector('.cover__contact'), {
+      opacity: 1, y: 0, duration: 0.6, ease: 'power2.out'
+    }, '-=0.2');
     tl.to(slide.querySelector('.cover__footer'), {
       opacity: 1, y: 0, duration: 0.8, ease: 'power2.out'
-    }, '-=0.2');
+    }, '-=0.3');
   }
 
   /* ── About (slide 1) — countUp ── */

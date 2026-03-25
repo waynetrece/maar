@@ -235,22 +235,8 @@ body {
   color: rgba(255,255,255,0.8);
   font-weight: 400;
 }
-.cover__footer {
-  position: absolute;
-  bottom: 28px; left: 60px; right: 60px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  font-family: var(--font-cn);
-}
-.cover__footer-top {
-  display: flex;
-  justify-content: space-between;
-  font-size: 18px;
-  color: rgba(255,255,255,0.6);
-  letter-spacing: 1px;
-}
 .cover__contact {
+  margin-top: 32px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -267,6 +253,16 @@ body {
   font-size: 18px;
   color: rgba(255,255,255,0.7);
   letter-spacing: 0.5px;
+}
+.cover__footer {
+  position: absolute;
+  bottom: 28px; left: 60px; right: 60px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  color: rgba(255,255,255,0.6);
+  font-family: var(--font-cn);
+  letter-spacing: 1px;
 }
 
 /* ═══ STATS ═══ */
@@ -1667,6 +1663,7 @@ body.fullscreen .slide--split .split { padding-top: 0; }
 .slide--cover .cover__label,
 .slide--cover .cover__divider,
 .slide--cover .cover__subtitle,
+.slide--cover .cover__contact,
 .slide--cover .cover__footer {
   opacity: 0;
   transform: translateY(16px);
@@ -1913,8 +1910,9 @@ body.fullscreen .slide--split .split { padding-top: 0; }
   .slide__desc--sm { font-size: 18px; margin-bottom: 28px; }
   .cover__title { font-size: 38px; }
   .cover__subtitle { font-size: 22px; }
-  .cover__footer { font-size: 16px; bottom: 48px; left: 28px; right: 28px; }
-  .cover__contact { font-size: 13px; bottom: 20px; left: 28px; right: 28px; }
+  .cover__footer { font-size: 16px; bottom: 24px; left: 28px; right: 28px; }
+  .cover__contact-name { font-size: 22px; }
+  .cover__contact-info { font-size: 15px; }
 
   /* Stats: 2x2 grid */
   .stats { flex-wrap: wrap; gap: 24px 48px; }
@@ -2029,8 +2027,10 @@ body.fullscreen .slide--split .split { padding-top: 0; }
   .slide__label { font-size: 13px; letter-spacing: 3px; }
   .cover__title { font-size: 30px; }
   .cover__subtitle { font-size: 18px; }
-  .cover__footer { font-size: 14px; flex-direction: column; align-items: center; gap: 4px; bottom: 48px; }
-  .cover__contact { font-size: 12px; bottom: 16px; left: 16px; right: 16px; }
+  .cover__footer { font-size: 14px; flex-direction: column; align-items: center; gap: 4px; bottom: 16px; left: 16px; right: 16px; }
+  .cover__contact { margin-top: 20px; }
+  .cover__contact-name { font-size: 20px; }
+  .cover__contact-info { font-size: 13px; }
 
   .stats { gap: 16px 24px; }
   .stat__number { font-size: 40px; }
