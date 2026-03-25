@@ -465,9 +465,10 @@
     });
   });
 
-  /* compare thumbnails → lightbox */
+  /* compare thumbnails → lightbox (skip if clicking the link) */
   document.querySelectorAll('.compare__thumb[data-lightbox]').forEach(el => {
-    el.addEventListener('click', () => {
+    el.addEventListener('click', (e) => {
+      if (e.target.closest('a')) return; // let link navigate normally
       const img = el.querySelector('img');
       const label = el.querySelector('.compare__thumb-label');
       const site = el.querySelector('.compare__thumb-site');

@@ -824,8 +824,16 @@ body {
   display: block;
   font-family: var(--font-en);
   font-size: 11px;
-  color: var(--slate-light);
+  color: var(--gold);
   padding: 0 8px 6px;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  position: relative;
+  z-index: 2;
+}
+a.compare__thumb-site:hover {
+  color: #e0bf6a;
+  text-decoration: underline;
 }
 
 /* ═══ REFERENCE SHOWCASE ═══ */
