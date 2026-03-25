@@ -182,11 +182,6 @@
     tl.to(slide.querySelector('.cover__footer'), {
       opacity: 1, y: 0, duration: 0.8, ease: 'power2.out'
     }, '-=0.2');
-    if (slide.querySelector('.cover__contact')) {
-      tl.to(slide.querySelector('.cover__contact'), {
-        opacity: 1, y: 0, duration: 0.6, ease: 'power2.out'
-      }, '-=0.4');
-    }
   }
 
   /* ── About (slide 1) — countUp ── */
